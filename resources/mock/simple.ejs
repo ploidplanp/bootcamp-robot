@@ -1,0 +1,39 @@
+{
+	"port" : 9000,
+	"protocol" : "http",
+	"stubs": [
+		{
+			"predicates": [
+				{
+					"equals" : {
+						"path" : "/test",
+						"method": "GET"
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"body" : "hello from mock"
+					}
+				}
+			]
+		},
+		{
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "default response from mock",
+						"headers": {
+							"Content-Type" : "text/plain",
+							"CustomHeader1" : "XXX"
+						}
+					}
+				}
+			]
+		}
+	]
+}
+
+<%# ./mb --configfile simple.ejs %>

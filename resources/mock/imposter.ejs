@@ -1,0 +1,483 @@
+{
+	"port" : 9000,
+	"protocol" : "https",
+	"stubs": [
+
+		<%# simple predicate %>
+		{
+
+			"predicates": [
+				{
+					"equals" : {
+				
+						"path": "/test1"
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "repsonse for test1",
+						"headers": {
+							"Content-Type" : "text/plain",
+							"CustomHeader1" : "XXX"
+						}
+					}
+				}
+			]
+		},
+
+
+		<%# predicates - startsWith  %>
+		{
+
+			"predicates": [
+				{
+					"startsWith" : {
+						"method" : "GET",
+						"path": "/startsWith",
+						"body": "/startsWith",
+						"headers": {
+							"CustomHeader1" : "startsWith"
+						}
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test startsWith"
+					}
+				}
+			]
+		},
+
+		<%# predicates - contains  %>
+		{
+
+			"predicates": [
+				{
+					"contains" : {
+						"method" : "POST",
+						"path": "contains",
+						"body": "contains",
+						"headers": {
+							"CustomHeader1" : "12345"
+						}
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test contain"
+					}
+				}
+			]
+		},
+
+
+		<%# include another ejs %>
+		<% include another.ejs %>,
+
+		<%# predicates - multiple condition AND   %>
+		{
+
+			"predicates": [
+				{
+					"contains" : {
+						"method" : "GET",
+						"path": "multiple2"
+					}
+				},
+				{
+					"contains" : {
+						"method" : "GET",
+						"path": "test2"
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test multiple"
+					}
+				}
+			]
+		},
+
+		<%# predicates - multiple 2 %>
+		{
+
+			"predicates": [
+				{
+					"or": [
+						{
+							"contains" : {
+								"method" : "GET",
+								"path": "multiple3"
+							}
+						},
+						{
+							"contains" : {
+								"method" : "GET",
+								"path": "test3"
+							}
+						}
+					]
+				},
+				{
+					"not" : {
+							"contains": {
+								"path": "xxx"
+							}
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test multiple no xxx"
+					}
+				}
+			]
+		},
+
+		<%# predicates - matches  %>
+		{
+
+			"predicates": [
+				{
+					"matches" : {
+						"method" : "POST",
+						"path": "/test_matches",
+						"body": "^test.*matches$"
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test matches"
+					}
+				}
+			]
+		},
+
+		<%# predicates - deepEquals  %>
+		{
+
+			"predicates": [
+				{
+					"and": [
+						{
+							"equals" : {
+								"method": "GET",
+								"path": "/test_deepequals"
+							}
+						},
+						{
+							"deepEquals" : {
+								"query" : {
+									"name" : "john",
+									"age" : "30"
+								}
+							}
+						}
+					]
+
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test deepEquals"
+					}
+				}
+			]
+		},
+
+		<%# exists predicate %>
+		{
+
+			"predicates": [
+				{
+					"equals" : {
+						"method" : "POST",
+						"path": "/test_exists"
+					}
+				},
+				{
+		          "exists": {
+		            "query": {
+		              "session_id": true,
+		              "user_id": false
+		            },
+		            "headers": {
+		              "Content-Type": true,
+		              "AllowXXX": false
+		            }
+		          }
+				}
+
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "repsonse for test exists"
+					}
+				}
+			]
+		},
+
+		<%# predicates - json  %>
+
+		{
+			"predicates" : [
+				{
+					"equals" : {
+						"method": "POST",
+						"path": "/test_json",
+						"body" : {
+							"name" : "david",
+							"age" : 14
+						}
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test json"
+					}
+				}
+			]
+
+		},
+
+		<%# predicates - jsonpath  %>
+		{
+			"predicates" : [
+				{
+					"and" : [
+						{
+							"equals" : {
+								"path" : "/test_jsonpath"
+							}
+						},
+						{
+							"equals" : {
+								"body" : "james"
+							},
+							"jsonpath": {
+								"selector" : "$.friends[1].name"
+							}
+						}
+					]
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test jsonpath"
+					}
+				}
+			]
+
+		},
+
+
+		<%# predicates - injects  %>
+		{
+
+			"predicates": [
+				{
+					"and": [
+						{
+							"equals" : {
+								"method": "POST",
+								"path": "/test_injects"
+							}
+						},
+						{
+							 "inject": "<%- stringify(filename, 'inject.ejs') %>"
+						}
+					]
+
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test injects"
+					}
+				}
+			]
+		},
+
+
+
+		<%# response - wait  %>
+		{
+
+			"predicates": [
+
+				{
+					"equals" : {
+						"method": "GET",
+						"path": "/test_delay"
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "predicate test delay"
+					},
+					"_behaviors": {
+						 "wait": "function() { return Math.floor(Math.random() * 901) + 100; }"
+					}
+				}
+			]
+		},
+
+		<%# response - copy  %>
+		{
+
+			"predicates": [
+
+				{
+					"contains" : {
+						"method": "POST",
+						"path": "/test_copy"
+					}
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": "${statusCode}",
+						"body" : "CustomHeader1=${CustomHeader1} \n id=${id} \n name=${name} \n status=${statusCode}"
+					},
+					"_behaviors": {
+						 "copy": [
+						 	{
+						 		"from" : { "query": "id" },
+						 		"into" : "${id}",
+						 		"using": {
+						 			"method" : "regex",
+						 			"selector" : ".*"
+						 		}
+						 	},
+						 	{
+						 		"from" : { "headers": "CustomHeader1" },
+						 		"into" : "${CustomHeader1}",
+						 		"using": {
+						 			"method" : "regex",
+						 			"selector" : ".*"
+						 		}
+						 	},
+						 	{
+						 		"from" : "body",
+						 		"into" : "${name}",
+						 		"using": {
+						 			"method" : "jsonpath",
+						 			"selector" : "$.friends[1].name"
+						 		}
+						 	},
+							{
+								"from" : "path",
+								"into" : "${statusCode}",
+								"using": {
+									"method" : "regex",
+									"selector" : "\\d+"
+								}
+							}
+						 ]
+					}
+				}
+			]
+		},
+
+
+		<%# response - decorate  %>
+		{
+
+			"predicates": [
+
+				{
+					"equals" : {
+						"method": "POST",
+						"path": "/test_decorate"
+					}
+				},
+				{
+					"exists" : {
+						"query" : {
+							"session_id" : true
+						}
+					}
+				}
+			],
+		      "responses": [
+		        {
+		          "is": {
+		            "body": "SessionID = ${SESSION_ID} <br> Now time is ${TIME}"
+		          },
+		          "_behaviors": {
+		           	"decorate": "<%- stringify(filename,'decorate.ejs') %>"
+		          }
+		        }
+		      ]
+		},
+
+
+		<%# default response %>
+
+		{
+			"responses": [
+				{
+					"is" : {
+						"body" : "default response"
+					}
+				},
+				{
+					"is" : {
+						"body" : "default response 2"
+					}
+				}
+			]
+		}
+
+		<%# proxy  %>
+	<% /*
+		{
+			"responses": [
+				{
+			      "proxy": {
+			        "to": "https://en.wikipedia.org",
+			        "mode": "proxyTransparent",
+			        "predicateGenerators": [{ "matches": { "path": true } }]
+			    	}
+			    }
+			]
+		}
+
+	*/ %>
+
+
+
+	]
+}

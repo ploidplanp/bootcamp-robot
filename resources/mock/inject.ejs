@@ -1,0 +1,11 @@
+function (request, logger) {
+		logger.info('Inside injection');
+		// you can verify anything from request here
+		// and judge if it match this predicate
+		if (request.body == "12345") {
+			
+			return true;
+		} else {
+			return false;
+		}
+}

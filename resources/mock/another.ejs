@@ -1,0 +1,22 @@
+{
+
+	"predicates": [
+		{
+			"equals" : {
+				"method" : "GET",
+				"path": "/test1_include"
+			}
+		}
+	],
+	"responses": [
+		{
+			"is" : {
+				"statusCode": 200,
+				"body" : <% include another.json %>,
+				"headers": {
+					"Content-Type" : "application/json"	
+				}
+			}
+		}
+	]			
+}

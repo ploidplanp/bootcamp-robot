@@ -1,0 +1,34 @@
+
+{
+  "port": 9000,
+  "protocol": "https",
+  "stubs": [
+  {
+      "responses": [
+        {
+          "proxy": {
+            "to": "https://10.248.224.42:8448",
+            "mode": "proxyAlways"
+          }
+        }
+      ]
+    },
+    {
+      "responses": [
+        { "is": { 
+            "statusCode": 200, 
+            "body": <% include getDepositAccounts.ejs %> 
+          }
+        }
+      ],
+      "predicates": [{
+
+            "contains": {
+              "path": "/scb/rest/ent-api/v1/party/cust-profile/custinfo/00000023421167/depositAccounts",
+              "method": "GET"
+            }
+      }]
+    }
+
+  ]
+}

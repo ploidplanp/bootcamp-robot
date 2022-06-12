@@ -1,0 +1,9 @@
+function (request, logger) { 
+		logger.info('Inside injection mock A'); 		
+
+		if (request.query["id"] <= 100) {
+			return true;  
+		} else {
+			return false;
+		}
+}

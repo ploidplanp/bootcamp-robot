@@ -1,0 +1,26 @@
+{"message":"[mb:2525] mountebank v2.1.0 now taking orders - point your browser to http://localhost:2525/ for help","level":"info","timestamp":"2020-03-05T08:11:33.796Z"}
+{"message":"[mb:2525] Running with --allowInjection set. See http://localhost:2525/docs/security for security info","level":"warn","timestamp":"2020-03-05T08:11:33.797Z"}
+{"message":"[mb:2525] PUT /imposters","level":"info","timestamp":"2020-03-05T08:11:33.815Z"}
+{"message":"[https:9000] Open for business...","level":"info","timestamp":"2020-03-05T08:11:33.861Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54238 => POST /test_jsonpath","level":"info","timestamp":"2020-03-05T08:11:40.625Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54244 => POST /test_jsonpath","level":"info","timestamp":"2020-03-05T08:11:45.805Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54251 => POST /test_jsonpath","level":"info","timestamp":"2020-03-05T08:11:50.516Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54266 => POST /test_injects","level":"info","timestamp":"2020-03-05T08:14:34.400Z"}
+{"message":"[https:9000] Inside injection","level":"info","timestamp":"2020-03-05T08:14:34.409Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54285 => POST /test_copy/201?id=9999","level":"info","timestamp":"2020-03-05T08:22:46.039Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54299 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:49.537Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54301 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:55.857Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54302 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:56.678Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54303 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:57.525Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54304 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:58.233Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54305 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:58.811Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54306 => POST /test_decorate?session_id=werwer","level":"info","timestamp":"2020-03-05T08:24:59.502Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54311 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:32.543Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54312 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:34.428Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54313 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:35.298Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54314 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:35.982Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54315 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:36.599Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54316 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:37.383Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54317 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:38.109Z"}
+{"message":"[https:9000] ::ffff:127.0.0.1:54318 => POST /test_decorate","level":"info","timestamp":"2020-03-05T08:25:38.629Z"}
+{"message":"[mb:2525] Adios - see you soon?","level":"info","timestamp":"2020-03-05T08:44:38.557Z"}

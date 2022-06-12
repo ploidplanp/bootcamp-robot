@@ -1,0 +1,32 @@
+{
+	"port" : 9000,
+	"protocol" : "http",
+	"stubs": [
+		{
+			"predicates": [
+				{
+					"matches" : {
+						"method" : "GET",
+						"path": "/test",
+						"query" : {
+							"id" : "\\d"
+						}
+					}
+				}
+
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "response from mock",
+						"headers": {
+							"Content-Type" : "text/plain",
+							"CustomHeader1" : "XXX"
+						}
+					}
+				}
+			]
+		}
+	]
+}

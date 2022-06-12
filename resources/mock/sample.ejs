@@ -1,0 +1,89 @@
+{
+  "port": 9000,
+  "protocol": "https",
+  "stubs": [
+  {
+        "responses": [
+          {
+            "is" : {
+              "statusCode": 200,
+              "body" : "default response"
+            }
+          }
+        ]
+  },
+  {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": <% include test.ejs %>,
+            "hearders": { "Content-Type": "application/json", "customheader" : "xxxxyy"}
+          }
+        },
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "OK",
+            "hearders": { "Content-Type": "application/json", "customheader" : "xxxxyy"}
+          }
+        }        
+      ],
+      "predicates": [
+        {
+          "contains": {
+            "path": "/test1",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "test 22222"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "contains": {
+            "path": "/test2",
+            "method": "GET"
+          }
+        }
+      ]
+    },
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "test 3333333"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "and": [
+            {
+              "contains": {
+                "path": "test2",
+                "method": "GET"
+              }
+            },
+            {
+              "contains": {
+                "path": "xxx",
+                "method": "GET"
+              }
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}

@@ -1,0 +1,56 @@
+{
+	"port" : 9000,
+	"protocol" : "http",
+	"stubs": [
+		{
+
+			"predicates": [
+				{
+					"and" : [
+						{
+							"equals" : {
+								"method" : "GET",
+								"path": "/test"
+							}
+						},
+						{
+							"inject": "<%- stringify(filename, 'inject_mock_a.ejs') %>"
+						}
+					]
+				}
+			],
+			"responses": [
+				{
+					"is" : {
+						"statusCode": 200,
+						"body" : "repsonse from mock A id = ${id}"
+					},
+					"_behaviors": {
+						 "copy": [
+						 	{
+						 		"from" : { "query": "id" },
+						 		"into" : "${id}",
+						 		"using": {
+						 			"method" : "regex",
+						 			"selector" : ".*$"
+						 		}
+						 	}
+						]
+					}	
+				}
+			]			
+		},
+		{
+			"responses": [
+				{
+			      "proxy": {
+			        "to": "http://127.0.0.1:9001",
+			        "mode": "proxyAlways",
+			        "predicateGenerators": [{ "matches": { "path": true } }]
+			    	}
+			    }			
+			]
+		}
+		
+	]
+}

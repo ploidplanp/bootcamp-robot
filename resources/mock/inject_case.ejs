@@ -1,0 +1,22 @@
+{
+	"predicates": [
+		{
+			"equals" : {
+				"method": "POST",
+				"path": "/test_injects"
+			}
+		},
+		{
+			 "inject": "<%- stringify(filename, 'inject.ejs') %>"
+		}
+
+	],
+	"responses": [
+		{
+			"is" : {
+				"statusCode": 200,
+				"body" : "predicate test injects"
+			}
+		}
+	]
+},

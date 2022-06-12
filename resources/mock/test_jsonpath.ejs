@@ -1,0 +1,26 @@
+{
+	"predicates" : [
+		{
+			"equals" : {
+				"path" : "/test_jsonpath"
+			}
+		},
+		{
+			"equals" : {
+				"body" : "james"
+			},
+			"jsonpath": {
+				"selector" : "$.friends[1].name"
+			}
+		}
+	],
+	"responses": [
+		{
+			"is" : {
+				"statusCode": 200,
+				"body" : "predicate test jsonpath"
+			}
+		}
+	]
+
+}		
