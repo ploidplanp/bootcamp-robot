@@ -1,0 +1,16 @@
+{
+   "name" : "${name}",
+   "age"  :  ${age},
+   "sex"  :  "${sex}",
+   "friends" : [
+       {
+         "name": "Marry",
+         "age": 30
+       },
+      {
+      "name": "David",
+      "age": 32
+      }
+   ],
+
+}

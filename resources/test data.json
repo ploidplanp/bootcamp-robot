@@ -1,0 +1,15 @@
+{
+  "name": "John",
+  "age": 34,
+  "sex": "male",
+  "friends": [
+    {
+      "name": "Marry",
+      "age": 30
+    },
+    {
+      "name": "David",
+      "age": 32
+    }
+  ]
+}
